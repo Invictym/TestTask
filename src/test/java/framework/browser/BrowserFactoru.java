@@ -32,7 +32,6 @@ public class BrowserFactoru {
         } else {
           System.setProperty("webdriver.chrome.driver", "src/resources/chromedriver");
         }
-        getChromeProfile();
         driver = new ChromeDriver(optionsChrome);
         driver.manage().window().maximize();
         break;
@@ -42,25 +41,10 @@ public class BrowserFactoru {
         } else {
           System.setProperty("webdriver.gecko.driver", "src/resources/geckodriver");
         }
-        getFirefoxProfile();
         driver = new FirefoxDriver(options);
         break;
     }
     driver.manage().timeouts().implicitlyWait(Integer.parseInt(fileWorker.getProperties("timeout")), TimeUnit.SECONDS);
     return driver;
-  }
-
-  private static void getFirefoxProfile() {
-    profile = new FirefoxProfile();
-    profile.setPreference("browser.download.folderList", 2);
-    profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream;application/x-debian-package;application/x-msdownload");
-    profile.setPreference("browser.download.dir", System.getProperty("user.dir"));
-    options.setProfile(profile);
-  }
-
-  private static void getChromeProfile() {
-    prefs.put("safebrowsing.enabled", "true");
-    prefs.put("download.default_directory", System.getProperty("user.dir"));
-    optionsChrome.setExperimentalOption("prefs", prefs);
   }
 }
