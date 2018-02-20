@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TutSuite" verbose="1" >
+    <test name="TutByTest" >
+        <parameter name="login" value="kuziaka12345@gmail.com"/>
+        <parameter name="password" value="12345qwer"/>
+        <parameter name="text" value="Hello, world!"/>
+        <classes>
+            <class name="com.google.tests.GoogleTest">
+            </class>
+        </classes>
+    </test>
+
+</suite>
